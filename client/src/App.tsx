@@ -1,5 +1,5 @@
 function App() {
-  return <h1>Instagram Auth</h1>;
+  return <h1 className="text-4xl">Instagram Auth</h1>;
 }
 
 export default App;
