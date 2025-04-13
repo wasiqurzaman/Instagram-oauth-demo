@@ -6,6 +6,7 @@ import Profile from "./pages/Profile";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import PrivateRoute from "./components/PrivateRoute";
+import AppLayout from "./components/AppLayout";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,22 +24,18 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/auth/redirect" element={<AuthRedirect />} />
+
           <Route
-            path="/dashboard"
+            path="/"
             element={
               <PrivateRoute>
-                <Dashboard />
+                <AppLayout />
               </PrivateRoute>
             }
-          />
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
+          >
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
