@@ -35,9 +35,35 @@ export async function handleLogin(req: Request, res: Response) {
 
     console.log(response.data);
 
+    res.cookie("access_token", response.data.access_token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+      maxAge: 86400000,
+      path: "/",
+    });
     res.json(response.data);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Can not get access token from instagram" });
   }
+}
+
+export async function handleLogout(req: Request, res: Response) {
+  const accessToken = req.cookies.access_token;
+
+  if (!accessToken) {
+    res.sendStatus(204);
+    return;
+  }
+
+  res.clearCookie("access_token", {
+    httpOnly: true,
+    sameSite: "none",
+    secure: true,
+    maxAge: 86400000,
+    path: "/",
+  });
+
+  res.sendStatus(204);
 }
