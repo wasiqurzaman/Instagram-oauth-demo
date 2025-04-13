@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAuthStore } from "../stores/authStore";
+import Loader from "../components/Loader";
 
 export default function AuthRedirect() {
   const { user } = useAuthStore();
@@ -32,5 +33,5 @@ export default function AuthRedirect() {
     getAuth();
   }, [navigate, setUser, user]);
 
-  return <div>Redirecting...</div>;
+  return <Loader label="Redirecting..." />;
 }
