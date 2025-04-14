@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import PrivateRoute from "./components/PrivateRoute";
 import AppLayout from "./components/AppLayout";
+import Media from "./pages/Media";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,6 +36,7 @@ function App() {
           >
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/feed" element={<Media />} />
           </Route>
         </Routes>
       </BrowserRouter>
