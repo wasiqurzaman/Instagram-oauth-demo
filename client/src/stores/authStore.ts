@@ -4,13 +4,12 @@ import { persist } from "zustand/middleware";
 
 type user = {
   id: string;
-  accessToken: string;
 };
 
 type AuthStore = {
   user: user | null;
   isAuthenticated: boolean;
-  setUser: (userId: string, accessToken: string) => Promise<void>;
+  setUser: (userId: string) => Promise<void>;
   logout: () => Promise<void>;
 };
 
@@ -19,8 +18,8 @@ export const useAuthStore = create<AuthStore>()(
     set => ({
       user: null,
       isAuthenticated: false,
-      setUser: async (userId, accessToken) => {
-        set({ user: { id: userId, accessToken }, isAuthenticated: true });
+      setUser: async userId => {
+        set({ user: { id: userId }, isAuthenticated: true });
       },
 
       logout: async () => {

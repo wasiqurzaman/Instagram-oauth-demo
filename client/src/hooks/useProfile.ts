@@ -5,10 +5,11 @@ interface UserProfile {
   id: string;
   username: string;
   name: string;
-  profile_pic_url: string;
+  profile_picture_url: string;
   followers_count: number;
   follows_count: number;
   media_count: number;
+  biography: string;
 }
 
 const useProfile = () => {

@@ -23,7 +23,7 @@ export default function AuthRedirect() {
           { withCredentials: true }
         );
         console.log(res);
-        setUser(res.data.user_id, res.data.access_token);
+        setUser(res.data.user_id);
         navigate("/dashboard");
       } catch (error) {
         console.log(error);
