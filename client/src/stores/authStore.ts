@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 import { persist } from "zustand/middleware";
+import { baseUrl } from "../configs/configs";
 
 type user = {
   id: string;
@@ -24,7 +25,7 @@ export const useAuthStore = create<AuthStore>()(
 
       logout: async () => {
         await axios.post(
-          "http://localhost:3000/api/auth/logout",
+          `${baseUrl}/auth/logout`,
           {},
           { withCredentials: true }
         );

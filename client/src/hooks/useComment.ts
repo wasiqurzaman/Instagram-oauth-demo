@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { baseUrl } from "../configs/configs";
 
 interface Comment {
   id: string;
@@ -10,7 +11,7 @@ interface Comment {
 const useComment = (commentId: string | undefined) => {
   const fetchComment = async () => {
     const { data } = await axios.get<Comment[]>(
-      `http://localhost:3000/api/comment?media_id=${commentId}`,
+      `${baseUrl}/comment?media_id=${commentId}`,
       {
         withCredentials: true,
       }

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { baseUrl } from "../configs/configs";
 
 interface UserProfile {
   id: string;
@@ -15,12 +16,9 @@ interface UserProfile {
 const useProfile = () => {
   const fetchProfile = async () => {
     // try {
-    const { data } = await axios.get<UserProfile>(
-      `http://localhost:3000/api/user/profile`,
-      {
-        withCredentials: true,
-      }
-    );
+    const { data } = await axios.get<UserProfile>(`${baseUrl}/user/profile`, {
+      withCredentials: true,
+    });
     return data;
     // } catch (error) {
     //   return new Error(error.message);
