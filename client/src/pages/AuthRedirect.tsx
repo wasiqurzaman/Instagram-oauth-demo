@@ -21,7 +21,12 @@ export default function AuthRedirect() {
         const res = await axios.post(
           `${baseUrl}/auth/login`,
           { code },
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
         console.log(res);
         setUser(res.data.user_id);
