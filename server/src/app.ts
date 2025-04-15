@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/user";
 import mediaRoutes from "./routes/media";
+import commentRoutes from "./routes/comment";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/media", mediaRoutes);
+app.use("/api/comment", commentRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "success" });
