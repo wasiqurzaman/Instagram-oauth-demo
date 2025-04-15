@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router";
+import { NavLink } from "react-router";
 import { FaUser } from "react-icons/fa";
 import { MdSpaceDashboard } from "react-icons/md";
 import { MdOutlineDynamicFeed } from "react-icons/md";
@@ -31,15 +31,9 @@ const navItems = [
 ];
 
 export default function SideNavbar() {
-  const navigate = useNavigate();
   const { logout } = useAuthStore();
   const { isSidebarOpen, toggleSidebar, isDarkmode, toggleDarkmode } =
     useUIStore();
-
-  // const handleLogout = () => {
-  //   logout();
-  //   navigate("/");
-  // };
 
   return (
     <>
@@ -69,7 +63,7 @@ export default function SideNavbar() {
             : "-translate-x-full md:translate-x-0 md:w-20"
         }`}
       >
-        <div className="flex justify-between items-center p-4 border-b border-zinc-300 dark:border-zinc-700">
+        <div className="flex justify-between items-center gap-1 p-4 border-b border-zinc-300 dark:border-zinc-700">
           <span
             className={`text-xl font-bold text-purple-500 ${
               isSidebarOpen ? "block" : "hidden md:hidden"
@@ -77,9 +71,9 @@ export default function SideNavbar() {
           >
             Instagram Viewer
           </span>
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center justify-center">
             <button onClick={toggleSidebar}>
-              <FaX size={24} />
+              <FaX size={20} />
             </button>
           </div>
         </div>
