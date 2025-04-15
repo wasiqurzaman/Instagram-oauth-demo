@@ -43,6 +43,9 @@ export default function Profile() {
             </div>
           </div>
           <p className="max-w-md text-gray-700 dark:text-white font-medium">
+            {profile?.name || "No bio available."}
+          </p>
+          <p className="max-w-md text-gray-700 dark:text-white font-medium">
             {profile?.biography || "No bio available."}
           </p>
         </div>

@@ -12,7 +12,7 @@ import Media from "./pages/Media";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60 * 1000, // 60s
+      staleTime: 10 * 1000, // 10s
     },
   },
 });
