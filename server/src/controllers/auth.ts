@@ -39,7 +39,7 @@ export async function handleLogin(req: Request, res: Response) {
       httpOnly: true,
       sameSite: "none",
       secure: true,
-      maxAge: 86400000,
+      maxAge: 60 * 60 * 1000,
       path: "/",
     });
     res.json(response.data);
@@ -61,7 +61,7 @@ export async function handleLogout(req: Request, res: Response) {
     httpOnly: true,
     sameSite: "none",
     secure: true,
-    maxAge: 86400000,
+    maxAge: 60 * 60 * 1000,
     path: "/",
   });
 
