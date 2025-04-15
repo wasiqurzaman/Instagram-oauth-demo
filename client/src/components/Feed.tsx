@@ -1,11 +1,15 @@
 import { useState } from "react";
-import useMedia from "../hooks/useMedia";
+import useMedia, { UserMedia } from "../hooks/useMedia";
 import Loader from "./Loader";
+import MediaModal from "./MediaModal";
 
 export default function Feed() {
   const { data: media, isLoading, error } = useMedia();
-
   const [activeTab, setActiveTab] = useState("posts");
+
+  const [selectedMedia, setSelectedMedia] = useState<UserMedia | null>(null);
+
+  console.log(selectedMedia);
 
   if (isLoading) return <Loader />;
 
@@ -47,7 +51,11 @@ export default function Feed() {
       {/* Media Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {(activeTab === "posts" ? posts : reels)?.map(item => (
-          <div key={item.id} className="relative">
+          <div
+            key={item.id}
+            className="relative cursor-pointer hover:scale-105 transition transform"
+            onClick={() => setSelectedMedia(item)}
+          >
             <img
               src={item.thumbnail_url || item.media_url}
               alt={item.caption || "Instagram media"}
@@ -61,6 +69,13 @@ export default function Feed() {
           </div>
         ))}
       </div>
+
+      {/* media modal */}
+      <MediaModal
+        isOpen={!!selectedMedia}
+        mediaItem={selectedMedia}
+        onClose={() => setSelectedMedia(null)}
+      />
     </>
   );
 }
