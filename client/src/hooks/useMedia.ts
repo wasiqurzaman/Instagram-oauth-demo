@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-interface UserMedia {
+export interface UserMedia {
   id: string;
   caption: string;
   comments_count: number;
