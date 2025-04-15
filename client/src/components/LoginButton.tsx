@@ -1,7 +1,10 @@
 import { FaInstagram } from "react-icons/fa6";
+import { redirectUri } from "../configs/configs";
+
 export default function LoginButton() {
   const clientId = "1236148904897293";
-  const redirectUri = "https://localhost:5173/auth/redirect";
+  // const redirectUri = "https://localhost:5173/auth/redirect";
+
   const scope = `instagram_business_basic%2Cinstagram_business_manage_messages%2Cinstagram_business_manage_comments%2Cinstagram_business_content_publish%2Cinstagram_business_manage_insights`;
 
   const authUrl = `https://www.instagram.com/oauth/authorize?enable_fb_login=0&force_authentication=1&client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
