@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAuthStore } from "../stores/authStore";
 import Loader from "../components/Loader";
+import { baseUrl } from "../configs/configs";
 
 export default function AuthRedirect() {
   const { user } = useAuthStore();
@@ -18,7 +19,7 @@ export default function AuthRedirect() {
       if (!code) return;
       try {
         const res = await axios.post(
-          "http://localhost:3000/api/auth/login",
+          `${baseUrl}/auth/login`,
           { code },
           { withCredentials: true }
         );
